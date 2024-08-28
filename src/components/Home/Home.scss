@@ -4,11 +4,27 @@
     align-items: center;
     justify-content: center;
 
+<<<<<<< HEAD
     &__image {
+=======
+     &__image {
+>>>>>>> fd5d8f24a44efd184ce78c184f13737c4463c621
         height: 20rem;
         width: 40rem;
     }
 
+<<<<<<< HEAD
+=======
+    &__container-image{
+        width: 100%;
+        margin: 1rem;
+    }
+
+    &__img{
+        width: 100%;
+    }
+
+>>>>>>> fd5d8f24a44efd184ce78c184f13737c4463c621
     &__container-img{
         margin: 1rem 0;
     }
@@ -17,9 +33,5 @@
         display: flex;
         margin: 1rem 0;
         gap: 1rem;
-    }
-
-    &__btn{
-        border: ra;
     }
 }
