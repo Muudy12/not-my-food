@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 @use "../../styles/partials/variables" as *;
-=======
-@use '../../styles/partials/variables' as *;
->>>>>>> fd5d8f24a44efd184ce78c184f13737c4463c621
 
 .main-preferences {
   display: flex;
@@ -19,11 +15,7 @@
 
     &__title {
       font-size: 1.5rem;
-<<<<<<< HEAD
       color: black;
-=======
-      color: #FFFFFF;
->>>>>>> fd5d8f24a44efd184ce78c184f13737c4463c621
       margin-bottom: 1rem;
       text-align: center;
     }
@@ -44,11 +36,7 @@
       width: 150px;
       height: 150px;
       object-fit: cover;
-<<<<<<< HEAD
-      border-radius: 0.8rem;
-=======
       border-radius: 4px;
->>>>>>> fd5d8f24a44efd184ce78c184f13737c4463c621
     }
   }
 }
