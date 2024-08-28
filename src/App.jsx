@@ -30,7 +30,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Home/>} />
-          <Route path='/fooder' element={<Preferences/>} />
+          <Route path='/fooder' element={<Preferences />} />
           <Route path='/fooder/:id' element={ dataLoaded && <FoodDetails foods={foods}/>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
