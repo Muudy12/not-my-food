@@ -1,0 +1,111 @@
+@use "../../styles/partials/variables" as *;
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__current {
+    width: 40rem;
+    height: 25rem;
+    overflow: hidden;
+    position: relative;
+
+    &-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__form {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem;
+    height: 3rem;
+    width: 100%;
+    justify-content: center;
+
+    & input,
+    & textarea {
+      border: 0.1rem solid lightgray;
+      border-radius: 0.4rem;
+      display: flex;
+      padding: 0.3rem;
+      resize: none;
+      font-family: Arial, Helvetica, sans-serif;
+      outline: none;
+      background-color: $secondary-color-mercury;
+
+      &:focus {
+        border-color: $secondary-color-blue;
+      }
+    }
+
+    & input {
+      width: 9rem;
+      padding: 0 0.5rem;
+    }
+
+    & textarea {
+      width: 20rem;
+      padding: 1rem 0.5rem;
+      overflow: hidden;
+    }
+
+    & button {
+      color: white;
+      position: relative;
+
+      &:focus {
+        outline: none;
+        border: none;
+      }
+    }
+  }
+
+  &__comments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 3rem;
+    }
+  }
+
+  & .post {
+    &__headers {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      padding-right: 2rem;
+
+      &-name {
+        margin-bottom: 0;
+      }
+
+      &-date {
+        margin-top: 0.5rem;
+      }
+    }
+    &__comment {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      &-delete {
+        background-color: red;
+        height: 1rem;
+        width: 3rem;
+        font-size: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+    }
+  }
+}

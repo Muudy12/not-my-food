@@ -1,0 +1,76 @@
+@use '../../styles/partials/variables' as *;
+
+// .header {
+//     background-color: $primary-color-purple;
+//     color: #fff;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+
+
+//     &__link{
+//       text-decoration: none;
+//     }
+
+//     &__logo {
+//       width: 150px;  // Adjust as needed
+//       // height: auto;  // This maintains the aspect ratio
+//     }
+
+//     &__avater{
+//       height: 2.5rem;
+//       width: 2.5rem;
+//       border-radius: 50%;
+//       object-fit: cover;
+//       // margin-bottom: 1rem;
+
+//     }
+//     &__nav-items {
+//         list-style: none;
+//         margin: 0;
+//         padding: 0;
+//         display: flex;
+//         flex-direction: row;
+//         align-items: center;
+
+//     }
+
+//     &__nav-item {
+//         // margin-right: 1rem;
+//     }
+
+// }
+
+.header {
+  &__nav {
+      display: flex;
+      justify-content: space-between;
+      background-color: $primary-color-purple;
+      align-items: center;
+      // padding-left: 1rem;
+      padding-right: 1rem;
+      color: $primary-color-light;
+      flex-direction: row;
+  }
+
+  h2{
+    color: $primary-color-light;
+  }
+
+  &__link {
+      text-decoration: none;
+      color: inherit;
+  }
+
+  &__logo {
+      max-height: 100px;
+      width: auto;
+  }
+
+  &__avatar {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
