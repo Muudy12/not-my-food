@@ -12,6 +12,8 @@ function App() {
   const baseUrl = "http://localhost:5050";
   const [foods, setFoods] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
+  const [likes, setLikes] = useState([]);
+  const [disLikes, setDisLikes] = useState([]);
 
   useEffect(() => {
     const getFoods = async () => {
@@ -29,8 +31,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path='/' element={<Home/>} />
-          <Route path='/fooder' element={<Preferences/>} />
+          <Route path='/' element={<Home setDisLikes={setDisLikes} setLikes={setLikes} foods={foods}/>} />
+          <Route path='/fooder' element={<Preferences likes={likes} disLikes={disLikes}/>} />
           <Route path='/fooder/:id' element={ dataLoaded && <FoodDetails foods={foods}/>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
