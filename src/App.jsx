@@ -31,13 +31,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-<<<<<<< HEAD
           <Route path='/' element={<Home/>} />
-          <Route path='/fooder' element={<Preferences />} />
-=======
-          <Route path='/' element={<Home setDisLikes={setDisLikes} setLikes={setLikes} foods={foods}/>} />
-          <Route path='/fooder' element={<Preferences likes={likes} disLikes={disLikes}/>} />
->>>>>>> c8ef459c1ed212b74610cf2aa08da352b48969ea
+             <Route path='/fooder' element={<Preferences likes={likes} disLikes={disLikes}/>} />
           <Route path='/fooder/:id' element={ dataLoaded && <FoodDetails foods={foods}/>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
