@@ -1,7 +1,7 @@
 import './Header.scss';
 import {Link} from "react-router-dom";
 import avaterIcon from  "../../assets/avater.png"
-import { ReactComponent as NotMyFoodLogo } from '../../assets/notmyfood.svg';
+import NotMyFoodLogo from '../../assets/notmyfood.svg';
 
 function Header() {
     return (
@@ -9,7 +9,7 @@ function Header() {
           <ul className="header__nav-items">
             <li className="header__nav-item">
               <Link to="/" className="header__link">
-                <NotMyFoodLogo className="header__logo" />
+                <img src={NotMyFoodLogo} className="header__logo" />
               </Link>
             </li>
             <li className="header__nav-item">
@@ -22,5 +22,5 @@ function Header() {
       </header>
     );
   }
-  
+
   export default Header;
