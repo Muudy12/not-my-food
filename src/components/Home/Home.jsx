@@ -12,8 +12,9 @@ function Home({foods, setLikes, setDisLikes}) {
 
   useEffect(() => {
     const current = foods.find(f => f.id === `${randomNum}`);
+    console.log(current)
     setCurrentImg(current);
-  }, [foods,randomNum])
+  }, [randomNum])
 
   const handleLikeChange = () => {
     setLikes(prevLikes => [...prevLikes, currentImg]);
