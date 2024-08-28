@@ -2,7 +2,7 @@ import React from 'react'
 
 function Preferences() {
   return (
-    <main className=''>
+    <main className='main-preferences'>
       <div className="dis-likes">
         <h2 className="dis-likes__title">Dislike</h2>
         {/* Need to map the data  */}
