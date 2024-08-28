@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import xIcon from "../../assets/x.svg";
 import checkIcon from "../../assets/check.svg";
 import "./Home.scss";
@@ -6,32 +6,44 @@ import "./Home.scss";
 function Home({ foods, setLikes, setDisLikes }) {
   const min = 1;
   const max = 20;
-  let randomNum = Math.floor(Math.random() * (max - min + 1));
   const [current, setCurrent] = useState();
   const [dataLoaded, setDataLoaded] = useState(false);
 
+  function getNewFood() {
+    const newNum = Math.floor(Math.random() * (max - min + 1));
+    const newFood = foods.find((f) => f.id == newNum);
+    return newFood;
+  }
+
   useEffect(() => {
-    const currentImg = foods.find((f) => f.id == randomNum);
-    setCurrent(currentImg);
+    setCurrent(getNewFood());
     setDataLoaded(true);
-  }, []);
+  }, [foods]);
 
   const handleLikeChange = () => {
-    setLikes((prevLikes) => [...prevLikes, current]);
-    setCurrent(null); // Reset current image or load another
+    setLikes(current);
+    setCurrent(getNewFood()); // Reset current image or load another
   };
 
   const handleDisLikeChange = () => {
-    setDisLikes((prevDisLikes) => [...prevDisLikes, current]);
-    setCurrent(null); // Reset current image or load another
+    setDisLikes(current);
+    setCurrent(getNewFood()); // Reset current image or load another
   };
 
-  return <main className="main">
-    {dataLoaded && <SectionDiv handleDisLikeChange={handleDisLikeChange} handleLikeChange={handleLikeChange} image={current.image} />}
-  </main>;
+  return (
+    <main className="main">
+      {dataLoaded && (
+        <SectionDiv
+          handleDisLikeChange={handleDisLikeChange}
+          handleLikeChange={handleLikeChange}
+          image={current.image}
+        />
+      )}
+    </main>
+  );
 }
 
-function SectionDiv({handleDisLikeChange, handleLikeChange, image}) {
+function SectionDiv({ handleDisLikeChange, handleLikeChange, image }) {
   return (
     <>
       <div className="main__container-image">

@@ -4,6 +4,11 @@
     align-items: center;
     justify-content: center;
 
+    &__image {
+        height: 20rem;
+        width: 40rem;
+    }
+
     &__container-img{
         margin: 1rem 0;
     }

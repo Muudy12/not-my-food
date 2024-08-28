@@ -1,22 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Preferences.scss';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Preferences.scss";
 
-
-{/* <Preferences foods={foods} likes={likes} dislikes={dislikes} /> */}
 function Preferences({ foods, likes, dislikes }) {
+  const navigate = useNavigate();
+
+  function goToFood(foodId) {
+    navigate(`/fooder/${foodId}`);
+  }
+
   return (
-    <main className='main-preferences'>
+    <main className="main-preferences">
       <div className="preferences-section dis-likes">
         <h2 className="preferences-section__title">Dislike</h2>
         <div className="preferences-section__grid">
-          {dislikes.map((food) => (
-            <div key={food.id} className="food-item">
+          {dislikes !== undefined && dislikes.map((food) => (
+            <div key={food.id} className="food-item" onClick={() => goToFood(food.id)}>
               {food.image ? (
-                <img 
-                  src={food.image} 
-                  alt={food.name} 
-                  className="food-item__img" 
+                <img
+                  src={food.image}
+                  alt={food.name}
+                  className="food-item__img"
                 />
               ) : (
                 <div className="food-item__placeholder">No Image</div>
@@ -28,13 +32,13 @@ function Preferences({ foods, likes, dislikes }) {
       <div className="preferences-section likes">
         <h2 className="preferences-section__title">Like</h2>
         <div className="preferences-section__grid">
-          {likes.map((food) => (
-            <div key={food.id} className="food-item">
+          {likes !== undefined && likes.map((food) => (
+            <div key={food.id} className="food-item"  onClick={() => goToFood(food.id)}>
               {food.image ? (
-                <img 
-                  src={food.image} 
-                  alt={food.name} 
-                  className="food-item__img" 
+                <img
+                  src={food.image}
+                  alt={food.name}
+                  className="food-item__img"
                 />
               ) : (
                 <div className="food-item__placeholder">No Image</div>
