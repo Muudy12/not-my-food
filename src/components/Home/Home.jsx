@@ -12,20 +12,19 @@ function Home({foods, setLikes, setDisLikes}) {
 
   useEffect(() => {
     const current = foods.find(f => f.id === `${randomNum}`);
+    console.log(current)
     setCurrentImg(current);
-  }, [foods,randomNum])
-
-
+  }, [randomNum])
 
   const handleLikeChange = () => {
     setLikes(prevLikes => [...prevLikes, currentImg]);
-    setCurrentImg(null);
-  }
+    setCurrentImg(null); // Reset current image or load another
+  };
 
   const handleDisLikeChange = () => {
     setDisLikes(prevDisLikes => [...prevDisLikes, currentImg]);
-    setCurrentImg(null);
-  }
+    setCurrentImg(null); // Reset current image or load another
+  };
 
   return (
     <main className='main'>
@@ -34,12 +33,12 @@ function Home({foods, setLikes, setDisLikes}) {
       </div>
 
       <div className='main__container'>
-        <button className='main__btn' on >
+        <button className='main__btn' onClick={handleDisLikeChange} >
           <img className='main__btn-img' src={xIcon} alt='image of x' />
         </button>
 
-        <button className='main__btn'>
-          <img src={checkIcon} alt='image of x' />
+        <button className='main__btn' onClick={handleLikeChange} >
+          <img src={checkIcon} alt='image of checkmark' />
         </button>
       </div>
 
