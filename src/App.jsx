@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -9,6 +9,20 @@ import NotFound from './components/NotFound/NotFound';
 import axios from 'axios';
 
 function App() {
+  const baseUrl = "http://localhost:5050";
+  const [foods, setFoods] = useState([]);
+  const [dataLoaded, setDataLoaded] = useState(false);
+
+  useEffect(() => {
+    const getFoods = async () => {
+      const response = await axios.get(`${baseUrl}/foods`);
+
+      setFoods(response.data);
+      setDataLoaded(true);
+    }
+
+    getFoods();
+  }, [])
 
   return (
     <>
@@ -17,7 +31,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/fooder' element={<Preferences/>} />
-          <Route path='/fooder/:id' element={<FoodDetails/>} />
+          <Route path='/fooder/:id' element={ dataLoaded && <FoodDetails foods={foods}/>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />
