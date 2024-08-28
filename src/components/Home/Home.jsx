@@ -17,13 +17,21 @@ function Home({ foods, setLikes, setDisLikes }) {
   }, []);
 
   const handleLikeChange = () => {
+    setDataLoaded(false);
     setLikes((prevLikes) => [...prevLikes, current]);
-    setCurrent(null); // Reset current image or load another
+    const newNum = Math.floor(Math.random() * (max - min + 1));
+    const newImg = foods.find((f) => f.id == newNum);
+    setCurrent(newImg); // Reset current image or load another
+    setDataLoaded(true);
   };
 
   const handleDisLikeChange = () => {
+    setDataLoaded(false);
     setDisLikes((prevDisLikes) => [...prevDisLikes, current]);
-    setCurrent(null); // Reset current image or load another
+    const newNum = Math.floor(Math.random() * (max - min + 1));
+    const newImg = foods.find((f) => f.id == newNum);
+    setCurrent(newImg); // Reset current image or load another
+    setDataLoaded(true);
   };
 
   return <main className="main">
