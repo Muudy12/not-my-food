@@ -28,11 +28,11 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+     <BrowserRouter>
         <Header />
         <Routes>
-          <Route path='/' element={<Home/>} />
-             <Route path='/fooder' element={<Preferences likes={likes} disLikes={disLikes}/>} />
+          <Route path='/' element={dataLoaded && <Home setDisLikes={setDisLikes} setLikes={setLikes} foods={foods}/>} />
+          <Route path='/fooder' element={dataLoaded && <Preferences likes={likes} disLikes={disLikes}/>} />
           <Route path='/fooder/:id' element={ dataLoaded && <FoodDetails foods={foods}/>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
