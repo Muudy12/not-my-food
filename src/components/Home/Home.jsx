@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import xIcon from '../../assets/x.svg'
 import checkIcon from '../../assets/check.svg'
 import './Home.scss'
 
-function Home() {
+function Home({foods}) {
+
+  const min = 1;
+  const max = 20;
+  let randomNum = Math.floor(Math.random()*(max - min + 1));
+
+  const [currentImg, setCurrentImg] = useState(foods.find((food) => food.id === randomNum ));
+
+
+
   return (
     <main className='main'>
-      {/* //TODO: add axios image here */}
       <div className='main__container-image'>
-        <img className='main__image' alt='photo of food to like or dislike' />
+        <img className='main__image' alt='photo of food to like or dislike' src={foods}img/>
       </div>
 
       <div className='main__container'>
