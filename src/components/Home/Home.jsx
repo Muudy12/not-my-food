@@ -18,7 +18,7 @@ function Home({ foods, setLikes, setDisLikes }) {
   useEffect(() => {
     setCurrent(getNewFood());
     setDataLoaded(true);
-  }, [foods]);
+  }, []);
 
   const handleLikeChange = () => {
     setLikes(current);
