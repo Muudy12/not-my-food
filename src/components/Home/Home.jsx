@@ -1,49 +1,70 @@
-import React, { useEffect, useState } from 'react'
-import xIcon from '../../assets/x.svg'
-import checkIcon from '../../assets/check.svg'
-import './Home.scss'
+import React, { useEffect, useRef, useState } from "react";
+import xIcon from "../../assets/x.svg";
+import checkIcon from "../../assets/check.svg";
+import "./Home.scss";
 
-function Home({foods, setLikes, setDisLikes}) {
-
+function Home({ foods, setLikes, setDisLikes }) {
   const min = 1;
   const max = 20;
-  let randomNum = Math.floor(Math.random()*(max - min + 1));
-  const [currentImg, setCurrentImg] = useState(null);
+  const [current, setCurrent] = useState();
+  const [dataLoaded, setDataLoaded] = useState(false);
+
+  function getNewFood() {
+    const newNum = Math.floor(Math.random() * (max - min + 1));
+    const newFood = foods.find((f) => f.id == newNum);
+    return newFood;
+  }
 
   useEffect(() => {
-    const current = foods.find(f => f.id === `${randomNum}`);
-    console.log(current)
-    setCurrentImg(current);
-  }, [randomNum])
+    setCurrent(getNewFood());
+    setDataLoaded(true);
+  }, [foods]);
 
   const handleLikeChange = () => {
-    setLikes(prevLikes => [...prevLikes, currentImg]);
-    setCurrentImg(null); // Reset current image or load another
+    setLikes(current);
+    setCurrent(getNewFood()); // Reset current image or load another
   };
 
   const handleDisLikeChange = () => {
-    setDisLikes(prevDisLikes => [...prevDisLikes, currentImg]);
-    setCurrentImg(null); // Reset current image or load another
+    setDisLikes(current);
+    setCurrent(getNewFood()); // Reset current image or load another
   };
 
   return (
-    <main className='main'>
-      <div className='main__container-image'>
-        <img className='main__image' alt='photo of food to like or dislike' src={currentImg}/>
-      </div>
-
-      <div className='main__container'>
-        <button className='main__btn' onClick={handleDisLikeChange} >
-          <img className='main__btn-img' src={xIcon} alt='image of x' />
-        </button>
-
-        <button className='main__btn' onClick={handleLikeChange} >
-          <img src={checkIcon} alt='image of checkmark' />
-        </button>
-      </div>
-
+    <main className="main">
+      {dataLoaded && (
+        <SectionDiv
+          handleDisLikeChange={handleDisLikeChange}
+          handleLikeChange={handleLikeChange}
+          image={current.image}
+        />
+      )}
     </main>
-  )
+  );
 }
 
-export default Home
+function SectionDiv({ handleDisLikeChange, handleLikeChange, image }) {
+  return (
+    <>
+      <div className="main__container-image">
+        <img
+          className="main__image"
+          alt="photo of food to like or dislike"
+          src={image}
+        />
+      </div>
+
+      <div className="main__container">
+        <button className="main__btn" onClick={handleDisLikeChange}>
+          <img className="main__btn-img" src={xIcon} alt="image of x" />
+        </button>
+
+        <button className="main__btn" onClick={handleLikeChange}>
+          <img src={checkIcon} alt="image of checkmark" />
+        </button>
+      </div>
+    </>
+  );
+}
+
+export default Home;
