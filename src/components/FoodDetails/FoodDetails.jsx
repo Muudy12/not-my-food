@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function FoodDetails({ foods }) {
-  const baseUrl = "http://localhost:5050";
+  const baseUrl = "https://not-my-food-api.onrender.com";
   const commentForm = useRef();
   const { id } = useParams();
   const [currentFood, setCurrentFood] = useState(foods[0]);

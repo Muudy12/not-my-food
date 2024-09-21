@@ -1,3 +1,5 @@
+@use "../../styles/partials/mixins" as *;
+
 .main {
   display: flex;
   flex-direction: column;
@@ -5,8 +7,12 @@
   justify-content: center;
 
   &__image {
-    height: 20rem;
-    width: 40rem;
+    width: 70%;
+
+    @include tablet {
+      height: 20rem;
+      width: 40rem;
+    }
   }
 
   &__container-image {

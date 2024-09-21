@@ -9,7 +9,7 @@ import NotFound from './components/NotFound/NotFound';
 import axios from 'axios';
 
 function App() {
-  const baseUrl = "http://localhost:5050";
+  const baseUrl = "https://not-my-food-api.onrender.com";
   const [foods, setFoods] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [likes, setLikes] = useState([]);

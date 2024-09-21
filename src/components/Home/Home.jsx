@@ -6,33 +6,35 @@ import "./Home.scss";
 function Home({ foods, setLikes, setDisLikes }) {
   const min = 1;
   const max = 20;
-  const [current, setCurrent] = useState();
+  const [current, setCurrent] = useState({});
   const [dataLoaded, setDataLoaded] = useState(false);
+
+  useEffect(() => {
+    getNewFood();
+  }, []);
 
   function getNewFood() {
     const newNum = Math.floor(Math.random() * (max - min + 1));
     const newFood = foods.find((f) => f.id == newNum);
-    return newFood;
+    if (newFood) {
+      setCurrent(newFood);
+      setDataLoaded(true);
+    }
   }
-
-  useEffect(() => {
-    setCurrent(getNewFood());
-    setDataLoaded(true);
-  }, []);
 
   const handleLikeChange = () => {
     setLikes(current);
-    setCurrent(getNewFood()); // Reset current image or load another
+    getNewFood(); // Reset current image or load another
   };
 
   const handleDisLikeChange = () => {
     setDisLikes(current);
-    setCurrent(getNewFood()); // Reset current image or load another
+    getNewFood(); // Reset current image or load another
   };
 
   return (
     <main className="main">
-      {dataLoaded && (
+      {dataLoaded && current && (
         <SectionDiv
           handleDisLikeChange={handleDisLikeChange}
           handleLikeChange={handleLikeChange}

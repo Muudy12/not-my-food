@@ -1,39 +1,45 @@
-@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .header {
   font-weight: 400;
   &__nav {
-      display: flex;
-      justify-content: space-between;
-      background-color: $primary-color-purple;
-      align-items: center;
-      // padding-left: 1rem;
-      padding-right: 1rem;
-      color: $primary-color-light;
+    display: flex;
+    background-color: $primary-color-purple;
+    align-items: center;
+    justify-content: center;
+    padding-right: 1rem;
+    color: $primary-color-light;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    @include tablet {
       flex-direction: row;
+      justify-content: space-between;
+    }
   }
 
-  &__container{
+  &__container {
     display: flex;
     align-items: center;
     gap: 1rem;
   }
 
-  h3{
+  h3 {
     color: $primary-color-light;
     margin: 0;
   }
 
   &__link {
-      text-decoration: none;
-      color: inherit;
-      font-weight: 400;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 400;
   }
 
   &__logo {
-      max-height: 80px;
-      width: auto;
-      padding: 1rem;
+    max-height: 80px;
+    width: auto;
+    padding: 1rem;
   }
 
   &__avatar {
