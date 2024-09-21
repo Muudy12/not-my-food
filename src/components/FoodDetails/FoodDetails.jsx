@@ -48,7 +48,9 @@ function FoodDetails() {
       event.target.comment.value = "";
     };
 
-    postComment();
+    if (name && comment) {
+      postComment();
+    }
   };
 
   function deleteComment(commentId) {
@@ -90,9 +92,9 @@ function FoodDetails() {
         />
         <button type="submit">COMMENT</button>
       </form>
-      <section className="details__comments">
-        {currentFood &&
-          currentFood.comments?.map((comment) => {
+      {currentFood && currentFood.comments?.length > 0 && (
+        <section className="details__comments">
+          {currentFood.comments.map((comment) => {
             return (
               <div
                 className="details__comments-container post"
@@ -116,7 +118,8 @@ function FoodDetails() {
               </div>
             );
           })}
-      </section>
+        </section>
+      )}
     </main>
   );
 }

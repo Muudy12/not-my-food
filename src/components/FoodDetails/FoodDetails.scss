@@ -14,6 +14,7 @@
     justify-content: center;
     box-sizing: border-box;
     padding: 0 2rem;
+    flex: 1;
 
     @include tablet {
       padding: 0 5rem;
@@ -102,6 +103,7 @@
       overflow: hidden;
 
       @include tablet {
+        min-height: 6rem;
         height: 100%;
         width: 100%;
       }
