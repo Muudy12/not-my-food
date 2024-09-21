@@ -11,6 +11,7 @@ function FoodDetails({ foods }) {
   const [comments, setComments] = useState(currentFood.comments);
 
   useEffect(() => {
+    document.title = "Not My Food - Detail";
     const newFood = foods.find((f) => f.id === id);
     setCurrentFood(newFood);
     setComments(newFood.comments);

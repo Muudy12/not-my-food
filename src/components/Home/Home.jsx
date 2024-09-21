@@ -10,6 +10,7 @@ function Home({ foods, setLikes, setDisLikes }) {
   const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
+    document.title = "Not My Food - Choices";
     getNewFood();
   }, []);
 
