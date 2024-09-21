@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
@@ -40,8 +40,9 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={dataLoaded && <Home setDisLikes={addToDislikes} setLikes={addToLikes} foods={foods}/>} />
-          <Route path='/fooder' element={dataLoaded && <Preferences likes={likes} dislikes={disLikes}/>} />
-          <Route path='/fooder/:id' element={ dataLoaded && <FoodDetails foods={foods}/>} />
+          <Route path='/preferences' element={dataLoaded && <Preferences likes={likes} dislikes={disLikes}/>} />
+          <Route path='/preferences/:id' element={ dataLoaded && <FoodDetails foods={foods}/>} />
+          <Route path='/choices' element={<Navigate to="/" />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />

@@ -18,10 +18,10 @@ function Header() {
           <Link to="/" className="header__link header__home-link">
             <h3>Choices</h3>
           </Link>
-          <Link to="/fooder" className="header__link header__home-link">
+          <Link to="/preferences" className="header__link header__home-link">
             <h3>Preferences</h3>
           </Link>
-          <Link to="/fooder" className="header__link header__profile-link">
+          <Link to="/preferences" className="header__link header__profile-link">
             <img className="header__avatar" src={avaterIcon} alt="Profile" />
           </Link>
         </div>

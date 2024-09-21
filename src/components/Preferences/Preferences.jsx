@@ -6,7 +6,7 @@ function Preferences({ foods, likes, dislikes }) {
   const navigate = useNavigate();
 
   function goToFood(foodId) {
-    navigate(`/fooder/${foodId}`);
+    navigate(`/preferences/${foodId}`);
   }
 
   return (
