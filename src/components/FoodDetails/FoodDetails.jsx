@@ -59,7 +59,7 @@ function FoodDetails({ foods }) {
   }
 
   return (
-    <div className="details">
+    <main className="details">
       <section className="details__current">
         <img
           className="details__current-image"
@@ -111,7 +111,7 @@ function FoodDetails({ foods }) {
             );
           })}
       </section>
-    </div>
+    </main>
   );
 }
 
