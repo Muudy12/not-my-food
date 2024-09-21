@@ -3,43 +3,46 @@ import "./FoodDetails.scss";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-function FoodDetails({ foods }) {
+function FoodDetails() {
   const baseUrl = "https://not-my-food-api.onrender.com";
-  const commentForm = useRef();
   const { id } = useParams();
-  const [currentFood, setCurrentFood] = useState(foods[0]);
-  const [comments, setComments] = useState(currentFood.comments);
+  const [currentFood, setCurrentFood] = useState({});
 
   useEffect(() => {
     document.title = "Not My Food - Detail";
-    const newFood = foods.find((f) => f.id === id);
-    setCurrentFood(newFood);
-    setComments(newFood.comments);
+
+    const getDetails = async () => {
+      const response = await axios.get(`${baseUrl}/foods/${id}`);
+      if (response.data) {
+        setCurrentFood(response.data);
+      }
+    };
+
+    getDetails();
   }, [id]);
 
   function convertTimestamp(timestamp) {
     const date = new Date(timestamp);
-
     const day = date.getDay();
     const dayWithLeadingZero = day < 10 ? `0${day}` : day;
     const month = date.getMonth();
     const year = date.getFullYear();
-
     return `${dayWithLeadingZero}/${month}/${year}`;
   }
 
   const addComment = (event) => {
     event.preventDefault();
 
-    const name = commentForm.current.name.value;
-    const comment = commentForm.current.comment.value;
+    const name = event.target.name.value;
+    const comment = event.target.comment.value;
 
     const postComment = async () => {
       const response = await axios.post(
         `${baseUrl}/foods/${currentFood.id}/comment`,
         { name: name, comment: comment }
       );
-      setComments(response.data.comments);
+
+      setCurrentFood(response.data);
 
       event.target.name.value = "";
       event.target.comment.value = "";
@@ -53,7 +56,9 @@ function FoodDetails({ foods }) {
       const response = await axios.delete(
         `${baseUrl}/foods/${currentFood.id}/comments/${commentId}`
       );
-      setComments(response.data);
+
+      const updatedCurrent = await axios.get(`${baseUrl}/foods/${id}`);
+      setCurrentFood(updatedCurrent.data);
     };
 
     delComment();
@@ -68,7 +73,7 @@ function FoodDetails({ foods }) {
           alt={currentFood.name}
         />
       </section>
-      <form ref={commentForm} className="details__form" onSubmit={addComment}>
+      <form className="details__form" onSubmit={addComment}>
         <input
           type="text"
           id="name"
@@ -86,8 +91,8 @@ function FoodDetails({ foods }) {
         <button type="submit">COMMENT</button>
       </form>
       <section className="details__comments">
-        {comments &&
-          comments.map((comment) => {
+        {currentFood &&
+          currentFood.comments?.map((comment) => {
             return (
               <div
                 className="details__comments-container post"

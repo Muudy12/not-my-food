@@ -5,29 +5,22 @@
   font-weight: 400;
   background-color: $primary-color-purple;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0.5rem 2rem;
   width: 100%;
   box-sizing: border-box;
 
-  @include tablet {
-    flex-direction: row;
-    justify-content: start;
-  }
-
   &__nav {
     display: flex;
     align-items: center;
     justify-content: center;
     color: $primary-color-light;
-    flex-direction: column;
+    flex-direction: row;
     box-sizing: border-box;
     width: 100%;
 
     @include tablet {
-      flex-direction: row;
       justify-content: space-between;
     }
 
@@ -36,10 +29,32 @@
     }
   }
 
+  & .logos-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: start;
+    }
+  }
+
   &__container {
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    
+    @include tablet {
+      flex-direction: row;
+      justify-content: end;
+    }
   }
 
   h3 {

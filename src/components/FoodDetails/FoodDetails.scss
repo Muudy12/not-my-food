@@ -7,7 +7,7 @@
   align-items: center;
 
   &__current {
-    width: 100%;
+    width: 70%;
     margin: 1rem 0;
     display: flex;
     align-items: center;
@@ -42,11 +42,14 @@
     align-items: center;
     box-sizing: border-box;
     padding: 0 2rem;
+    flex: 1;
 
     @include tablet {
       flex-direction: row;
       position: relative;
       padding: 0 5rem;
+      max-height: 8rem;
+      margin: 1rem 0 2rem;
     }
 
     @include desktop {
@@ -65,6 +68,10 @@
       background-color: $secondary-color-mercury;
       width: 100%;
       box-sizing: border-box;
+
+      @include tablet {
+        font-size: 1rem;
+      }
 
       &:focus {
         border-color: $secondary-color-blue;
@@ -95,12 +102,8 @@
       overflow: hidden;
 
       @include tablet {
-        height: 7rem;
+        height: 100%;
         width: 100%;
-      }
-
-      @include desktop {
-        height: 8rem;
       }
     }
 
@@ -139,6 +142,10 @@
     box-sizing: border-box;
     width: 100%;
 
+    @include tablet {
+      flex: 1;
+    }
+
     &-container {
       display: flex;
       align-items: center;
@@ -149,6 +156,8 @@
 
       @include tablet {
         padding: 1rem 5rem;
+        flex: 1;
+        justify-content: center;
       }
 
       @include desktop {

@@ -7,13 +7,15 @@ import MuPort from "../../assets/mu-port.png";
 function Header() {
   return (
     <header className="header">
-      <Link className="mu-port" to="https://muport.netlify.app/">
-        <img src={MuPort} alt="Mu Port Logo" />
-      </Link>
       <nav className="header__nav">
-        <Link to="/" className="header__link header__logo-link">
-          <img src={logo2} className="header__logo" alt="Not My Food Logo" />
-        </Link>
+        <div className="logos-container">
+          <Link className="mu-port" to="https://muport.netlify.app/">
+            <img src={MuPort} alt="Mu Port Logo" />
+          </Link>
+          <Link to="/" className="header__link header__logo-link">
+            <img src={logo2} className="header__logo" alt="Not My Food Logo" />
+          </Link>
+        </div>
         <div className="header__container">
           <Link to="/" className="header__link header__home-link">
             <h3>Choices</h3>

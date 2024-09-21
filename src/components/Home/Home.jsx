@@ -1,41 +1,51 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import xIcon from "../../assets/x.svg";
 import checkIcon from "../../assets/check.svg";
 import "./Home.scss";
+import axios from "axios";
 
-function Home({ foods, setLikes, setDisLikes }) {
+function Home({ setLikes, setDisLikes }) {
+  const baseUrl = "https://not-my-food-api.onrender.com";
   const min = 1;
   const max = 20;
   const [current, setCurrent] = useState({});
-  const [dataLoaded, setDataLoaded] = useState(false);
+  const [foods, setFoods] = useState([]);
 
   useEffect(() => {
     document.title = "Not My Food - Choices";
-    getNewFood();
+
+    const getFoods = async () => {
+      const response = await axios.get(`${baseUrl}/foods`);
+      if (response.data){
+        setFoods(response.data);
+        getNewFood(response.data);
+      }
+    }
+
+    getFoods();
   }, []);
 
-  function getNewFood() {
+  function getNewFood(foods) {
     const newNum = Math.floor(Math.random() * (max - min + 1));
     const newFood = foods.find((f) => f.id == newNum);
     if (newFood) {
       setCurrent(newFood);
-      setDataLoaded(true);
     }
   }
 
   const handleLikeChange = () => {
     setLikes(current);
-    getNewFood(); // Reset current image or load another
+    getNewFood(foods); // Reset current image or load another
   };
 
   const handleDisLikeChange = () => {
     setDisLikes(current);
-    getNewFood(); // Reset current image or load another
+    getNewFood(foods); // Reset current image or load another
   };
 
   return (
     <main className="main">
-      {dataLoaded && current && (
+      {current && (
         <SectionDiv
           handleDisLikeChange={handleDisLikeChange}
           handleLikeChange={handleLikeChange}

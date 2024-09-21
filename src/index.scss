@@ -15,20 +15,23 @@
 
 html,
 body {
-  margin: 0;
   padding: 0;
-  height: 100vh;
+  margin: 0;
 }
 
 #root {
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
 
 main {
   flex: 1;
+  box-sizing: border-box;
 }
 
 a {
