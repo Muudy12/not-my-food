@@ -2,9 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  overflow-y: scroll;
 
   &__current {
     width: 70%;
@@ -107,11 +105,17 @@
         height: 100%;
         width: 100%;
       }
+
+      @include desktop {
+        min-height: 7rem;
+      }
     }
 
     & button {
       color: white;
       width: 100%;
+      outline: 0;
+      border: 0;
 
       @include tablet {
         width: 18%;
@@ -217,6 +221,8 @@
         align-items: center;
         justify-content: center;
         color: white;
+        outline: 0;
+        border: 0;
 
         @include tablet {
           width: 5rem;

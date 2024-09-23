@@ -8,7 +8,7 @@ function Home({ setLikes, setDisLikes }) {
   const baseUrl = "https://not-my-food-api.onrender.com";
   const min = 1;
   const max = 20;
-  const [current, setCurrent] = useState();
+  const [current, setCurrent] = useState(null);
   const [foods, setFoods] = useState([]);
 
   useEffect(() => {
@@ -16,11 +16,11 @@ function Home({ setLikes, setDisLikes }) {
 
     const getFoods = async () => {
       const response = await axios.get(`${baseUrl}/foods`);
-      if (response.data){
+      if (response.data) {
         setFoods(response.data);
         getNewFood(response.data);
       }
-    }
+    };
 
     getFoods();
   }, []);
@@ -58,7 +58,7 @@ function Home({ setLikes, setDisLikes }) {
 
 function SectionDiv({ handleDisLikeChange, handleLikeChange, image }) {
   return (
-    <>
+    <main>
       <div className="main__container-image">
         <img
           className="main__image"
@@ -66,7 +66,6 @@ function SectionDiv({ handleDisLikeChange, handleLikeChange, image }) {
           src={image}
         />
       </div>
-
       <div className="main__container">
         <button className="main__btn dislike-btn" onClick={handleDisLikeChange}>
           <img className="main__btn-img" src={xIcon} alt="image of x" />
@@ -76,7 +75,7 @@ function SectionDiv({ handleDisLikeChange, handleLikeChange, image }) {
           <img src={checkIcon} alt="image of checkmark" />
         </button>
       </div>
-    </>
+    </main>
   );
 }
 
