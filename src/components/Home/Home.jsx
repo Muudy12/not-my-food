@@ -58,7 +58,7 @@ function Home({ setLikes, setDisLikes }) {
 
 function SectionDiv({ handleDisLikeChange, handleLikeChange, image }) {
   return (
-    <main>
+    <>
       <div className="main__container-image">
         <img
           className="main__image"
@@ -75,7 +75,7 @@ function SectionDiv({ handleDisLikeChange, handleLikeChange, image }) {
           <img src={checkIcon} alt="image of checkmark" />
         </button>
       </div>
-    </main>
+    </>
   );
 }
 
