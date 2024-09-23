@@ -1,6 +1,12 @@
 @use "../../styles/partials/mixins" as *;
 
 .main {
+  &__loading {
+    width: 100%;
+    border: none;
+    outline: none;
+  }
+
   &__image {
     width: 70%;
 

@@ -45,6 +45,12 @@ function Home({ setLikes, setDisLikes }) {
 
   return (
     <main className="main">
+      {!current && (
+        <iframe
+          src="https://giphy.com/embed/3oEjI6SIIHBdRxXI40"
+          className="main__loading"
+        ></iframe>
+      )}
       {current && (
         <SectionDiv
           handleDisLikeChange={handleDisLikeChange}
