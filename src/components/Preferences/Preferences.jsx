@@ -12,11 +12,11 @@ function Preferences({ foods, likes, dislikes }) {
 
   return (
     <main className="main-preferences">
-      <div className="preferences-section dis-likes">
-        <h2 className="preferences-section__title">Dislike</h2>
+      <div className="preferences-section likes">
+        <h2 className="preferences-section__title">Like</h2>
         <div className="preferences-section__grid">
-          {dislikes !== undefined &&
-            dislikes.map((food) => (
+          {likes !== undefined &&
+            likes.map((food) => (
               <div
                 key={food.id}
                 className="food-item"
@@ -35,11 +35,11 @@ function Preferences({ foods, likes, dislikes }) {
             ))}
         </div>
       </div>
-      <div className="preferences-section likes">
-        <h2 className="preferences-section__title">Like</h2>
+      <div className="preferences-section dis-likes">
+        <h2 className="preferences-section__title">Dislike</h2>
         <div className="preferences-section__grid">
-          {likes !== undefined &&
-            likes.map((food) => (
+          {dislikes !== undefined &&
+            dislikes.map((food) => (
               <div
                 key={food.id}
                 className="food-item"

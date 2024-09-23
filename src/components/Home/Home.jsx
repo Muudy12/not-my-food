@@ -35,12 +35,12 @@ function Home({ setLikes, setDisLikes }) {
 
   const handleLikeChange = () => {
     setLikes(current);
-    getNewFood(foods); // Reset current image or load another
+    getNewFood(foods);
   };
 
   const handleDisLikeChange = () => {
     setDisLikes(current);
-    getNewFood(foods); // Reset current image or load another
+    getNewFood(foods);
   };
 
   return (
