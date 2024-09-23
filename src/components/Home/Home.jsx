@@ -8,7 +8,7 @@ function Home({ setLikes, setDisLikes }) {
   const baseUrl = "https://not-my-food-api.onrender.com";
   const min = 1;
   const max = 20;
-  const [current, setCurrent] = useState({});
+  const [current, setCurrent] = useState();
   const [foods, setFoods] = useState([]);
 
   useEffect(() => {
