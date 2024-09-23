@@ -68,11 +68,11 @@ function SectionDiv({ handleDisLikeChange, handleLikeChange, image }) {
       </div>
 
       <div className="main__container">
-        <button className="main__btn" onClick={handleDisLikeChange}>
+        <button className="main__btn dislike-btn" onClick={handleDisLikeChange}>
           <img className="main__btn-img" src={xIcon} alt="image of x" />
         </button>
 
-        <button className="main__btn" onClick={handleLikeChange}>
+        <button className="main__btn like-btn" onClick={handleLikeChange}>
           <img src={checkIcon} alt="image of checkmark" />
         </button>
       </div>

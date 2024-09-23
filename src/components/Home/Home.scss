@@ -35,4 +35,17 @@
     margin: 1rem 0;
     gap: 1rem;
   }
+
+  & button {
+    outline: 0;
+    border: 0;
+
+    &.dislike-btn:hover {
+      background-color: red;
+    }
+
+    &.like-btn:hover {
+      background-color: green;
+    }
+  }
 }
